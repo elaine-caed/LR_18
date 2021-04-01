@@ -1,0 +1,40 @@
+namespace Lab18
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.Write("Enter Xmin: ");
+			string sxMin = Console.ReadLine();
+			double xMin = Double.Parse(sxMin);
+
+			Console.Write("Enter Xmax: ");
+			string sxMax = Console.ReadLine();
+			double xMax = double.Parse(sxMax);
+
+			Console.Write("Enter dX: ");
+			string sdx = Console.ReadLine();
+			double dx = double.Parse(sdx);
+			double x1 = xMin;
+			double x2 = 3 * x1;
+			double y;
+
+
+			while (x1 <= xMax)
+			{
+				y = Math.Pow(Math.Cos(x1 - (x2 / Math.Pow(x1 + (53 * Math.Pow(x2, 2)), 0.5))), 4);
+				Console.WriteLine("x1 = {0}\t\t x2 = {1}\t\t y = {2}", x1, x2, y);
+				x1 += dx;
+				x2 = 3 * x1;
+			}
+
+
+			if (Math.Abs(x1 - xMax - dx) > 0.0001)
+			{
+				y = Math.Pow(xMax, 2);
+				Console.WriteLine("x = {0}\t\t y = {1}", xMax, y);
+			}
+			Console.ReadKey();
+		}
+  }
+}
